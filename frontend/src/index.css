@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: 263 70% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 263 70% 50%;
+    --accent-foreground: 210 40% 98%;
+    --background: 222 47% 4%;
+    --foreground: 213 27% 84%;
+    --card: 222 47% 4%;
+    --card-foreground: 213 27% 84%;
+    --border: 217 32% 17%;
+    --ring: 263 70% 50%;
+  }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] antialiased selection:bg-indigo-500/30;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  }
+  
+  .glass-card {
+    @apply relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-500 hover:border-indigo-500/50 hover:bg-white/10;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-500 bg-indigo-600 rounded-2xl hover:bg-indigo-500 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 font-bold text-slate-200 transition-all duration-300 bg-slate-800/80 border border-white/5 rounded-2xl hover:bg-slate-700 hover:text-white active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full px-5 py-3 bg-slate-900/50 border border-slate-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 transition-all duration-300 placeholder:text-slate-600;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-slate-200 to-slate-500 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-indigo {
+    @apply bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .glow-mesh {
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[hsl(var(--background))];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 border-2 border-transparent bg-clip-content rounded-full hover:bg-slate-700;
+}
